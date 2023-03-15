@@ -57,23 +57,18 @@ const CatEdit = () => (
 );
 
 const App = () => (
-    <Admin dataProvider={gqlDataProvider}>
+  <Admin dataProvider={gqlDataProvider}>
     <Resource
-        name="Cat"
-        list={CatList}
-        show={CatShow}
-        create={CatCreate}
-        edit={CatEdit}
-        icon={() => (
-        <Image
-            src="/catgirl-icon.webp"
-            alt="catgirl"
-            width={32}
-            height={32}
-        />
-        )}
+      name="Cat"
+      list={CatList}
+      show={CatShow}
+      create={CatCreate}
+      edit={CatEdit}
+      icon={() => (
+        <Image src="/catgirl-icon.webp" alt="catgirl" width={32} height={32} />
+      )}
     />
-    </Admin>
+  </Admin>
 );
 
 export default App;
