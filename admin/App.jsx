@@ -1,6 +1,7 @@
 import * as React from 'react';
 import gqlDataProvider from '@/providers/data_provider';
 import authProvider from '@/providers/auth_provider';
+import { i18nProvider } from '@/providers/i18n_provider';
 
 import {
   Admin,
@@ -19,40 +20,59 @@ import {
   Edit,
   EditButton,
   SelectInput,
+  useTranslate,
+  useRecordContext,
 } from 'react-admin';
 import Image from 'next/image';
 
-const CatList = () => (
-  <List>
-    <Datagrid>
-      <TextField source="name" />
-      <TextField source="sex" />
-      <ShowButton />
-      <EditButton />
-      <DeleteButton />
-    </Datagrid>
-  </List>
-);
+const SexField = (props) => {
+  const record = useRecordContext(props);
+  const translate = useTranslate();
+  const translatedSex = translate(`enums.sex.${record.sex.toLowerCase()}`)
+
+  return record ? <span>{translatedSex}</span> : null
+}
+
+const CatList = () => {
+  const translate = useTranslate()
+  const title = translate('resources.Cat.list')
+
+  return (
+    <List title={title}>
+      <Datagrid>
+        <TextField source="name" />
+        <SexField source="sex" />
+        <ShowButton />
+        <EditButton />
+        <DeleteButton />
+      </Datagrid>
+    </List>
+  );
+}
 
 const CatShow = () => (
   <Show>
     <SimpleShowLayout>
       <TextField source="id" />
       <TextField source="name" />
-      <TextField source="sex" />
+      <SexField source="sex" />
     </SimpleShowLayout>
   </Show>
 );
 
-const EditableFields = () => (
-  <>
-    <TextInput source="name" validate={[required()]} fullWidth />
-    <SelectInput source="sex" validate={[required()]} choices={[
-      { id: "MALE", name: "Male" },
-      { id: "FEMALE", name: "Female" },
-    ]} />
-  </>
-)
+const EditableFields = () => {
+  const translate = useTranslate();
+
+  return (
+    <>
+      <TextInput source="name" validate={[required()]} fullWidth />
+      <SelectInput source="sex" validate={[required()]} choices={[
+        { id: "MALE", name: translate("enums.sex.male") },
+        { id: "FEMALE", name: translate("enums.sex.female") },
+      ]} />
+    </>
+  )
+}
 
 const CatCreate = () => (
   <Create>
@@ -75,7 +95,7 @@ const CatIcon = () => (
 );
 
 const App = () => (
-  <Admin dataProvider={gqlDataProvider} authProvider={authProvider}>
+  <Admin dataProvider={gqlDataProvider} authProvider={authProvider} i18nProvider={i18nProvider}>
     <Resource
       name="Cat"
       list={CatList}
