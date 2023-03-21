@@ -1,26 +1,9 @@
-import { ApolloClient, gql, InMemoryCache } from '@apollo/client';
 import { DataProvider } from 'react-admin';
-
-const API_URL = 'http://localhost:4000/gql';
-
-const client = new ApolloClient({
-  uri: API_URL,
-  cache: new InMemoryCache(),
-  defaultOptions: {
-    watchQuery: {
-      fetchPolicy: 'no-cache',
-      errorPolicy: 'ignore',
-    },
-
-    query: {
-      fetchPolicy: 'no-cache',
-      errorPolicy: 'all',
-    },
-  },
-});
+import { gql } from '@apollo/client';
+import client from './gql_client';
 
 const fields: Record<string, string> = {
-  Cat: 'id name',
+  Cat: 'id name sex',
 };
 
 const without = (resource: string, fields_: string[]) =>
