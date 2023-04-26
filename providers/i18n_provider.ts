@@ -10,4 +10,10 @@ export const i18nProvider = polyglotI18nProvider(
   locale => translations[locale],
   'pl', // default locale
   [{ locale: 'en', name: 'English' }, { locale: 'pl', name: 'Polski' }],
+  {
+    allowMissing: true,
+    onMissingKey: (missingKey: string) => {
+      console.info(`[i18nProvider.tsx] ${missingKey}}`);
+    },
+  },
 );

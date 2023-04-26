@@ -7,6 +7,10 @@ export const en: TranslationMessages = {
     sex: {
       male: "Male",
       female: "Female"
+    },
+    age: {
+      junior: "Junior",
+      senior: "Senior"
     }
   },
   resources: {

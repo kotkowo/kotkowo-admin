@@ -1,17 +1,21 @@
-import { DataProvider } from 'react-admin';
+import { DataProvider, UpdateParams } from 'react-admin';
 import { gql } from '@apollo/client';
 import client from './gql_client';
+import { UpdateParamsWithImages, uploadImages } from './image_uploader';
 
 const fields: Record<string, string> = {
-  Cat: 'id name sex',
+  Cat: 'id name sex age fivFelvStatus healthStatus castrated images{id url filename uploadUrl}',
 };
 
 const without = (resource: string, fields_: string[]) =>
   fields[resource].split(' ').filter((field) => !fields_.includes(field));
 
 const editFields: Record<string, string[]> = {
-  Cat: without('Cat', ['id']),
+  Cat: without('Cat', ['id']).concat(['base64Image']),
 };
+
+const camelToSnakeCase = (str: string): string =>
+  str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`);
 
 const dataProvider: DataProvider = {
   async getList(resource, { pagination, sort }) {
@@ -20,7 +24,7 @@ const dataProvider: DataProvider = {
     const offset = (page - 1) * perPage;
     const limit = perPage;
     const { field, order } = sort;
-    const sortVar = { order, field: field.toUpperCase() };
+    const sortVar = { order, field: camelToSnakeCase(field).toUpperCase() };
 
     const method = `list${resource}`;
 
@@ -100,14 +104,19 @@ const dataProvider: DataProvider = {
 
     return { data: result.data[method].result };
   },
-  async update(resource, params) {
+  async update(resource: string, params: UpdateParams) {
     const method = `update${resource}`;
-    const input = Object.keys(params.data)
+    let input = Object.keys(params.data)
       .filter((key) => editFields[resource].includes(key))
       .reduce((obj, key) => {
         obj[key] = params.data[key];
         return obj;
       }, {});
+
+    if (params.data?.images !== undefined) {
+      await uploadImages(client, resource, params.id, params as UpdateParamsWithImages)
+    }
+
     const result = await client.mutate({
       mutation: gql`
                 mutation ($id: ID, $input: Update${resource}Input) {
