@@ -1,0 +1,21 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cat_tags",
+  "info": {
+    "singularName": "cat-tag",
+    "pluralName": "cat-tags",
+    "displayName": "CatTag"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true,
+      "maxLength": 32,
+      "unique": true
+    }
+  }
+}

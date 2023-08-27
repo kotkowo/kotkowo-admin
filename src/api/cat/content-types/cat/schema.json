@@ -1,0 +1,85 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cats",
+  "info": {
+    "singularName": "cat",
+    "pluralName": "cats",
+    "displayName": "Cat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "name",
+      "required": true
+    },
+    "images": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::image.image"
+    },
+    "description_heading": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "sex": {
+      "type": "enumeration",
+      "enum": [
+        "Male",
+        "Female"
+      ],
+      "required": true
+    },
+    "age": {
+      "type": "enumeration",
+      "enum": [
+        "Junior",
+        "Adult",
+        "Senior"
+      ],
+      "required": true
+    },
+    "medical_status": {
+      "type": "enumeration",
+      "enum": [
+        "TestedAndVaccinated"
+      ],
+      "required": true
+    },
+    "fiv_felv": {
+      "type": "enumeration",
+      "enum": [
+        "Negative",
+        "Positive"
+      ],
+      "required": true
+    },
+    "castrated": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "healthy": {
+      "type": "boolean",
+      "required": true,
+      "default": true
+    },
+    "cat_tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::cat-tag.cat-tag"
+    }
+  }
+}
