@@ -11,10 +11,10 @@
     "generate_token": "node ./src/commands/generate_token.js"
   },
   "dependencies": {
-    "@strapi/plugin-graphql": "^4.12.5",
-    "@strapi/plugin-i18n": "4.12.5",
-    "@strapi/plugin-users-permissions": "4.12.5",
-    "@strapi/strapi": "4.12.5",
+    "@strapi/plugin-graphql": "^4.13.1",
+    "@strapi/plugin-i18n": "4.13.1",
+    "@strapi/plugin-users-permissions": "4.13.1",
+    "@strapi/strapi": "4.13.1",
     "better-sqlite3": "8.5.0",
     "commander": "^11.0.0",
     "pg": "^8.11.3"
