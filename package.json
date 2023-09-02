@@ -7,7 +7,8 @@
     "develop": "strapi develop",
     "start": "strapi start",
     "build": "strapi build",
-    "strapi": "strapi"
+    "strapi": "strapi",
+    "generate_token": "node ./src/commands/generate_token.js"
   },
   "dependencies": {
     "@strapi/plugin-graphql": "^4.12.5",
@@ -15,6 +16,7 @@
     "@strapi/plugin-users-permissions": "4.12.5",
     "@strapi/strapi": "4.12.5",
     "better-sqlite3": "8.5.0",
+    "commander": "^11.0.0",
     "pg": "^8.11.3"
   },
   "author": {
