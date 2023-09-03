@@ -12,10 +12,9 @@ module.exports = ({ env }) => {
   const connections = {
     postgres: {
       connection: {
-        socketPath: env("DATABASE_SOCKET_PATH", "/var/run/postgresql"),
+        host: env("DATABASE_SOCKET_PATH", "/var/run/postgresql"),
         database: env("DATABASE_NAME", "strapi"),
         user: env("DATABASE_USERNAME", "postgres"),
-        // password: env("DATABASE_PASSWORD", "postgres"),
       },
       pool: {
         min: env.int("DATABASE_POOL_MIN", 2),
