@@ -1,0 +1,20 @@
+{
+  "kind": "collectionType",
+  "collectionName": "announcement_tags",
+  "info": {
+    "singularName": "announcement-tag",
+    "pluralName": "announcement-tags",
+    "displayName": "AnnouncementTag",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "text": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
