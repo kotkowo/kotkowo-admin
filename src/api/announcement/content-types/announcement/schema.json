@@ -28,6 +28,12 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::announcement-tag.announcement-tag"
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article",
+      "mappedBy": "announcement"
     }
   }
 }
