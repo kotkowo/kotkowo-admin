@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "adopted_cats",
+  "info": {
+    "singularName": "adopted-cat",
+    "pluralName": "adopted-cats",
+    "displayName": "AdoptedCat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cat": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cat.cat"
+    },
+    "adoption_date": {
+      "type": "datetime",
+      "required": true
+    }
+  }
+}
