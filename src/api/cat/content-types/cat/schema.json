@@ -80,6 +80,23 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::cat-tag.cat-tag"
+    },
+    "color": {
+      "type": "enumeration",
+      "enum": [
+        "Black",
+        "Gray",
+        "Tricolor",
+        "Patched",
+        "Ginger",
+        "OtherColor"
+      ],
+      "required": true
+    },
+    "is_dead": {
+      "type": "boolean",
+      "default": false,
+      "required": true
     }
   }
 }
