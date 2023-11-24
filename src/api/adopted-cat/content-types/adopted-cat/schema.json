@@ -12,11 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "cat": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::cat.cat"
-    },
     "adoption_date": {
       "type": "datetime",
       "required": true

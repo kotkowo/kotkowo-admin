@@ -688,11 +688,6 @@ export interface ApiAdoptedCatAdoptedCat extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    cat: Attribute.Relation<
-      'api::adopted-cat.adopted-cat',
-      'oneToOne',
-      'api::cat.cat'
-    >;
     adoption_date: Attribute.DateTime & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -863,6 +858,11 @@ export interface ApiCatCat extends Schema.CollectionType {
     is_dead: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
+    adopted_cat: Attribute.Relation<
+      'api::cat.cat',
+      'oneToOne',
+      'api::adopted-cat.adopted-cat'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
