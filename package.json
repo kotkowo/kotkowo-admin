@@ -26,6 +26,7 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",
     "strapi-provider-email-mailjet": "^4.0.0",
+    "strapi-provider-mail-console": "file:providers/strapi-provider-mail-console",
     "styled-components": "^5.3.11"
   },
   "engines": {

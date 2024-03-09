@@ -1,0 +1,28 @@
+{
+  "name": "strapi-provider-email-console",
+  "version": "0.1.0",
+  "description": "mock provider for strapi email",
+  "keywords": [
+    "email",
+    "strapi"
+  ],
+  "homepage": "http://strapi.io",
+  "license": "MIT",
+  "author": {
+    "name": "Maksymilian Jodłowski",
+    "email": "maksymilian.jodlowski@gmail.com",
+    "url": "https://ravensiris.xyz/"
+  },
+  "main": "./lib",
+  "directories": {
+    "lib": "./lib"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=10.0.0",
+    "npm": ">=6.0.0"
+  },
+  "strapi": {
+    "isProvider": true
+  }
+}
