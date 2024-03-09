@@ -1,33 +1,37 @@
 {
   "name": "kotkowo-admin",
-  "private": true,
   "version": "0.1.0",
+  "private": true,
   "description": "A Strapi application",
-  "scripts": {
-    "develop": "strapi develop",
-    "start": "strapi start",
-    "build": "strapi build",
-    "strapi": "strapi",
-    "generate_token": "node ./src/commands/generate_token.js"
-  },
-  "dependencies": {
-    "@strapi/plugin-graphql": "^4.13.7",
-    "@strapi/plugin-i18n": "4.13.7",
-    "@strapi/plugin-users-permissions": "4.13.7",
-    "@strapi/strapi": "4.13.7",
-    "better-sqlite3": "8.5.0",
-    "commander": "^11.0.0",
-    "pg": "^8.11.3"
-  },
+  "license": "MIT",
   "author": {
     "name": "A Strapi developer"
   },
-  "strapi": {
-    "uuid": "e7739fe7-4e1d-4c40-8a65-c693366cf0ed"
+  "scripts": {
+    "build": "strapi build",
+    "develop": "strapi develop",
+    "generate_token": "node ./src/commands/generate_token.js",
+    "start": "strapi start",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-graphql": "4.20.4",
+    "@strapi/plugin-i18n": "4.20.4",
+    "@strapi/plugin-users-permissions": "4.20.4",
+    "@strapi/strapi": "4.20.4",
+    "better-sqlite3": "9.4.3",
+    "commander": "^11.0.0",
+    "pg": "^8.11.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
+    "styled-components": "^5.3.11"
   },
   "engines": {
     "node": "18.x",
     "npm": "9.x"
   },
-  "license": "MIT"
+  "strapi": {
+    "uuid": "e7739fe7-4e1d-4c40-8a65-c693366cf0ed"
+  }
 }
