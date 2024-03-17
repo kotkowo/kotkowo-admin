@@ -1,4 +1,11 @@
 module.exports = ({ env }) => ({
+  graphql: {
+    config: {
+      apolloServer: {
+        introspection: true
+      }
+    }
+  },
   email: {
     config: {
       provider: "strapi-provider-mail-console",
