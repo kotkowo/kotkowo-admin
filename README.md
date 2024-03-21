@@ -3,6 +3,12 @@
 - email - dev@ravensiris.xyz
 - password - A$$W0rd!!!
 
+# Dev DB default read-only token
+
+```
+fac9b049abd782bcbb8a51595ffd6996eaa74b328addd77cf6241409c50074beca668acc632a193193e179c7b3f2eae949c384bab0cc6a5211118c6d18159898a15fb79c6c077e74ef59e84137471db010beb68447b6c6d71da7a7992363e527b52d9fad099c33e4cc60d8d4be174b9114d0e19ab5ff41a67bfd1f97d7f0731a
+```
+
 # 🚀 Getting started with Strapi
 
 Strapi comes with a full featured [Command Line Interface](https://docs.strapi.io/dev-docs/cli) (CLI) which lets you scaffold and manage your project in seconds.
