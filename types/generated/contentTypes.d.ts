@@ -935,6 +935,38 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   };
 }
 
+export interface ApiArticleViewArticleView extends Schema.CollectionType {
+  collectionName: 'article_views';
+  info: {
+    singularName: 'article-view';
+    pluralName: 'article-views';
+    displayName: 'ArticleView';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    client_adress: Attribute.String & Attribute.Required;
+    view_date: Attribute.Date & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::article-view.article-view',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::article-view.article-view',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCatCat extends Schema.CollectionType {
   collectionName: 'cats';
   info: {
@@ -1075,6 +1107,7 @@ declare module '@strapi/types' {
       'api::announcement.announcement': ApiAnnouncementAnnouncement;
       'api::announcement-tag.announcement-tag': ApiAnnouncementTagAnnouncementTag;
       'api::article.article': ApiArticleArticle;
+      'api::article-view.article-view': ApiArticleViewArticleView;
       'api::cat.cat': ApiCatCat;
       'api::cat-tag.cat-tag': ApiCatTagCatTag;
       'api::image.image': ApiImageImage;
