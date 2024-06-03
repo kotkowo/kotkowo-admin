@@ -949,6 +949,11 @@ export interface ApiArticleViewArticleView extends Schema.CollectionType {
   attributes: {
     client_adress: Attribute.String & Attribute.Required;
     view_date: Attribute.Date & Attribute.Required;
+    article: Attribute.Relation<
+      'api::article-view.article-view',
+      'oneToOne',
+      'api::article.article'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
