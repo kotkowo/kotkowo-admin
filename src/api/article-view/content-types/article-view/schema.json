@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "article_views",
+  "info": {
+    "singularName": "article-view",
+    "pluralName": "article-views",
+    "displayName": "ArticleView",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "client_adress": {
+      "type": "string",
+      "unique": false,
+      "required": true
+    },
+    "view_date": {
+      "type": "date",
+      "required": true
+    }
+  }
+}
