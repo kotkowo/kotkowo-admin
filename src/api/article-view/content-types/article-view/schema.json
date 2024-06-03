@@ -20,6 +20,11 @@
     "view_date": {
       "type": "date",
       "required": true
+    },
+    "article": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::article.article"
     }
   }
 }
