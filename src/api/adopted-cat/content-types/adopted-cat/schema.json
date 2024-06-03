@@ -15,6 +15,11 @@
     "adoption_date": {
       "type": "datetime",
       "required": true
+    },
+    "cat": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cat.cat"
     }
   }
 }
