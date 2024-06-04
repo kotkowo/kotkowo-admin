@@ -941,13 +941,13 @@ export interface ApiArticleViewArticleView extends Schema.CollectionType {
     singularName: 'article-view';
     pluralName: 'article-views';
     displayName: 'ArticleView';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     client_address: Attribute.String & Attribute.Required;
-    view_date: Attribute.Date;
     article: Attribute.Relation<
       'api::article-view.article-view',
       'oneToOne',
