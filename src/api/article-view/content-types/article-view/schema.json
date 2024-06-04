@@ -4,8 +4,7 @@
   "info": {
     "singularName": "article-view",
     "pluralName": "article-views",
-    "displayName": "ArticleView",
-    "description": ""
+    "displayName": "ArticleView"
   },
   "options": {
     "draftAndPublish": false

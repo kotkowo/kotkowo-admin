@@ -941,7 +941,6 @@ export interface ApiArticleViewArticleView extends Schema.CollectionType {
     singularName: 'article-view';
     pluralName: 'article-views';
     displayName: 'ArticleView';
-    description: '';
   };
   options: {
     draftAndPublish: false;
