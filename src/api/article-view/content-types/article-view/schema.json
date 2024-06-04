@@ -4,22 +4,19 @@
   "info": {
     "singularName": "article-view",
     "pluralName": "article-views",
-    "displayName": "ArticleView",
-    "description": ""
+    "displayName": "ArticleView"
   },
   "options": {
-    "draftAndPublish": true
+    "draftAndPublish": false
   },
   "pluginOptions": {},
   "attributes": {
-    "client_adress": {
+    "client_address": {
       "type": "string",
-      "unique": false,
       "required": true
     },
     "view_date": {
-      "type": "date",
-      "required": true
+      "type": "date"
     },
     "article": {
       "type": "relation",

@@ -941,14 +941,13 @@ export interface ApiArticleViewArticleView extends Schema.CollectionType {
     singularName: 'article-view';
     pluralName: 'article-views';
     displayName: 'ArticleView';
-    description: '';
   };
   options: {
-    draftAndPublish: true;
+    draftAndPublish: false;
   };
   attributes: {
-    client_adress: Attribute.String & Attribute.Required;
-    view_date: Attribute.Date & Attribute.Required;
+    client_address: Attribute.String & Attribute.Required;
+    view_date: Attribute.Date;
     article: Attribute.Relation<
       'api::article-view.article-view',
       'oneToOne',
@@ -956,7 +955,6 @@ export interface ApiArticleViewArticleView extends Schema.CollectionType {
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
-    publishedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
       'api::article-view.article-view',
       'oneToOne',
