@@ -19,7 +19,8 @@
     "cat": {
       "type": "relation",
       "relation": "oneToOne",
-      "target": "api::cat.cat"
+      "target": "api::cat.cat",
+      "inversedBy": "adopted_cat"
     }
   }
 }
