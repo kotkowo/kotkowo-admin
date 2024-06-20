@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "adopted_cats",
+  "collectionName": "looking_for_adoption_cats",
   "info": {
-    "singularName": "adopted-cat",
-    "pluralName": "adopted-cats",
-    "displayName": "AdoptedCat",
+    "singularName": "looking-for-adoption-cat",
+    "pluralName": "looking-for-adoption-cats",
+    "displayName": "LookingForAdoptionCat",
     "description": ""
   },
   "options": {
@@ -12,18 +12,18 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "adoption_date": {
-      "type": "datetime",
-      "required": true
-    },
     "cat": {
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cat.cat"
     },
-    "contact_informations": {
+    "owned_by_kotkowo": {
+      "type": "boolean",
+      "required": true
+    },
+    "caretaker": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::contact-information.contact-information"
     }
   }

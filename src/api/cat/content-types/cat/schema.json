@@ -14,7 +14,7 @@
   "attributes": {
     "name": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "slug": {
       "type": "uid",
@@ -28,11 +28,11 @@
     },
     "description_heading": {
       "type": "string",
-      "required": true
+      "required": false
     },
     "description": {
       "type": "text",
-      "required": true
+      "required": false
     },
     "sex": {
       "type": "enumeration",
@@ -49,14 +49,14 @@
         "Adult",
         "Senior"
       ],
-      "required": true
+      "required": false
     },
     "medical_status": {
       "type": "enumeration",
       "enum": [
         "TestedAndVaccinated"
       ],
-      "required": true
+      "required": false
     },
     "fiv_felv": {
       "type": "enumeration",
@@ -64,16 +64,16 @@
         "Negative",
         "Positive"
       ],
-      "required": true
+      "required": false
     },
     "castrated": {
       "type": "boolean",
-      "required": true,
+      "required": false,
       "default": true
     },
     "healthy": {
       "type": "boolean",
-      "required": true,
+      "required": false,
       "default": true
     },
     "cat_tags": {
@@ -98,11 +98,13 @@
       "default": false,
       "required": true
     },
-    "adopted_cat": {
+    "contact_informations": {
       "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::adopted-cat.adopted-cat",
-      "inversedBy": "cat"
+      "relation": "oneToMany",
+      "target": "api::contact-information.contact-information"
+    },
+    "chip_number": {
+      "type": "string"
     }
   }
 }

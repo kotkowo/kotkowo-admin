@@ -1,0 +1,28 @@
+{
+  "kind": "collectionType",
+  "collectionName": "contact_informations",
+  "info": {
+    "singularName": "contact-information",
+    "pluralName": "contact-informations",
+    "displayName": "ContactInformation",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "phone_number": {
+      "type": "string",
+      "required": true
+    },
+    "first_name": {
+      "type": "string",
+      "required": true
+    },
+    "last_name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}
