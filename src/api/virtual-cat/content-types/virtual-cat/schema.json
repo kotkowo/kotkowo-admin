@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "virtual_cats",
+  "info": {
+    "singularName": "virtual-cat",
+    "pluralName": "virtual-cats",
+    "displayName": "VirtualCat"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cat": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cat.cat"
+    },
+    "supporters": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::supporter.supporter",
+      "inversedBy": "virtual_cats"
+    }
+  }
+}

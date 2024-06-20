@@ -806,6 +806,11 @@ export interface ApiAdoptedCatAdoptedCat extends Schema.CollectionType {
       'oneToOne',
       'api::cat.cat'
     >;
+    contact_informations: Attribute.Relation<
+      'api::adopted-cat.adopted-cat',
+      'oneToMany',
+      'api::contact-information.contact-information'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -981,22 +986,17 @@ export interface ApiCatCat extends Schema.CollectionType {
     draftAndPublish: true;
   };
   attributes: {
-    name: Attribute.String & Attribute.Required;
+    name: Attribute.String;
     slug: Attribute.UID<'api::cat.cat', 'name'> & Attribute.Required;
     images: Attribute.Relation<'api::cat.cat', 'oneToMany', 'api::image.image'>;
-    description_heading: Attribute.String & Attribute.Required;
-    description: Attribute.Text & Attribute.Required;
+    description_heading: Attribute.String;
+    description: Attribute.Text;
     sex: Attribute.Enumeration<['Male', 'Female']> & Attribute.Required;
-    age: Attribute.Enumeration<['Junior', 'Adult', 'Senior']> &
-      Attribute.Required;
-    medical_status: Attribute.Enumeration<['TestedAndVaccinated']> &
-      Attribute.Required;
-    fiv_felv: Attribute.Enumeration<['Negative', 'Positive']> &
-      Attribute.Required;
-    castrated: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<true>;
-    healthy: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    age: Attribute.Enumeration<['Junior', 'Adult', 'Senior']>;
+    medical_status: Attribute.Enumeration<['TestedAndVaccinated']>;
+    fiv_felv: Attribute.Enumeration<['Negative', 'Positive']>;
+    castrated: Attribute.Boolean & Attribute.DefaultTo<true>;
+    healthy: Attribute.Boolean & Attribute.DefaultTo<true>;
     cat_tags: Attribute.Relation<
       'api::cat.cat',
       'oneToMany',
@@ -1009,11 +1009,12 @@ export interface ApiCatCat extends Schema.CollectionType {
     is_dead: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
-    adopted_cat: Attribute.Relation<
+    contact_informations: Attribute.Relation<
       'api::cat.cat',
-      'oneToOne',
-      'api::adopted-cat.adopted-cat'
+      'oneToMany',
+      'api::contact-information.contact-information'
     >;
+    chip_number: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1058,6 +1059,77 @@ export interface ApiCatTagCatTag extends Schema.CollectionType {
   };
 }
 
+export interface ApiContactInformationContactInformation
+  extends Schema.CollectionType {
+  collectionName: 'contact_informations';
+  info: {
+    singularName: 'contact-information';
+    pluralName: 'contact-informations';
+    displayName: 'ContactInformation';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    phone_number: Attribute.String & Attribute.Required;
+    first_name: Attribute.String & Attribute.Required;
+    last_name: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::contact-information.contact-information',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::contact-information.contact-information',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiFoundCatFoundCat extends Schema.CollectionType {
+  collectionName: 'found_cats';
+  info: {
+    singularName: 'found-cat';
+    pluralName: 'found-cats';
+    displayName: 'FoundCat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    found_location: Attribute.String & Attribute.Required;
+    special_signs: Attribute.String;
+    found_datetime: Attribute.DateTime & Attribute.Required;
+    cat: Attribute.Relation<
+      'api::found-cat.found-cat',
+      'oneToOne',
+      'api::cat.cat'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::found-cat.found-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::found-cat.found-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiImageImage extends Schema.CollectionType {
   collectionName: 'images';
   info: {
@@ -1092,6 +1164,165 @@ export interface ApiImageImage extends Schema.CollectionType {
   };
 }
 
+export interface ApiLookingForAdoptionCatLookingForAdoptionCat
+  extends Schema.CollectionType {
+  collectionName: 'looking_for_adoption_cats';
+  info: {
+    singularName: 'looking-for-adoption-cat';
+    pluralName: 'looking-for-adoption-cats';
+    displayName: 'LookingForAdoptionCat';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cat: Attribute.Relation<
+      'api::looking-for-adoption-cat.looking-for-adoption-cat',
+      'oneToOne',
+      'api::cat.cat'
+    >;
+    owned_by_kotkowo: Attribute.Boolean & Attribute.Required;
+    caretaker: Attribute.Relation<
+      'api::looking-for-adoption-cat.looking-for-adoption-cat',
+      'oneToOne',
+      'api::contact-information.contact-information'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::looking-for-adoption-cat.looking-for-adoption-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::looking-for-adoption-cat.looking-for-adoption-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLostCatLostCat extends Schema.CollectionType {
+  collectionName: 'lost_cats';
+  info: {
+    singularName: 'lost-cat';
+    pluralName: 'lost-cats';
+    displayName: 'LostCat';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    disappearance_location: Attribute.String & Attribute.Required;
+    special_signs: Attribute.String;
+    during_medical_treatment: Attribute.Boolean & Attribute.Required;
+    disappearance_datetime: Attribute.DateTime & Attribute.Required;
+    cat: Attribute.Relation<
+      'api::lost-cat.lost-cat',
+      'oneToOne',
+      'api::cat.cat'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::lost-cat.lost-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::lost-cat.lost-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiSupporterSupporter extends Schema.CollectionType {
+  collectionName: 'supporters';
+  info: {
+    singularName: 'supporter';
+    pluralName: 'supporters';
+    displayName: 'supporter';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    contact_information: Attribute.Relation<
+      'api::supporter.supporter',
+      'oneToOne',
+      'api::contact-information.contact-information'
+    >;
+    virtual_cats: Attribute.Relation<
+      'api::supporter.supporter',
+      'manyToMany',
+      'api::virtual-cat.virtual-cat'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::supporter.supporter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::supporter.supporter',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiVirtualCatVirtualCat extends Schema.CollectionType {
+  collectionName: 'virtual_cats';
+  info: {
+    singularName: 'virtual-cat';
+    pluralName: 'virtual-cats';
+    displayName: 'VirtualCat';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    cat: Attribute.Relation<
+      'api::virtual-cat.virtual-cat',
+      'oneToOne',
+      'api::cat.cat'
+    >;
+    supporters: Attribute.Relation<
+      'api::virtual-cat.virtual-cat',
+      'manyToMany',
+      'api::supporter.supporter'
+    >;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::virtual-cat.virtual-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::virtual-cat.virtual-cat',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -1117,7 +1348,13 @@ declare module '@strapi/types' {
       'api::article-view.article-view': ApiArticleViewArticleView;
       'api::cat.cat': ApiCatCat;
       'api::cat-tag.cat-tag': ApiCatTagCatTag;
+      'api::contact-information.contact-information': ApiContactInformationContactInformation;
+      'api::found-cat.found-cat': ApiFoundCatFoundCat;
       'api::image.image': ApiImageImage;
+      'api::looking-for-adoption-cat.looking-for-adoption-cat': ApiLookingForAdoptionCatLookingForAdoptionCat;
+      'api::lost-cat.lost-cat': ApiLostCatLostCat;
+      'api::supporter.supporter': ApiSupporterSupporter;
+      'api::virtual-cat.virtual-cat': ApiVirtualCatVirtualCat;
     }
   }
 }

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "lost_cats",
+  "info": {
+    "singularName": "lost-cat",
+    "pluralName": "lost-cats",
+    "displayName": "LostCat",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "disappearance_location": {
+      "type": "string",
+      "required": true
+    },
+    "special_signs": {
+      "type": "string"
+    },
+    "during_medical_treatment": {
+      "type": "boolean",
+      "required": true
+    },
+    "disappearance_datetime": {
+      "type": "datetime",
+      "required": true
+    },
+    "cat": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cat.cat"
+    }
+  }
+}

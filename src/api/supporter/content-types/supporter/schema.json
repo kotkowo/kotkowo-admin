@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "supporters",
+  "info": {
+    "singularName": "supporter",
+    "pluralName": "supporters",
+    "displayName": "supporter"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "contact_information": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::contact-information.contact-information"
+    },
+    "virtual_cats": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::virtual-cat.virtual-cat",
+      "mappedBy": "supporters"
+    }
+  }
+}
