@@ -806,9 +806,9 @@ export interface ApiAdoptedCatAdoptedCat extends Schema.CollectionType {
       'oneToOne',
       'api::cat.cat'
     >;
-    contact_informations: Attribute.Relation<
+    caretaker: Attribute.Relation<
       'api::adopted-cat.adopted-cat',
-      'oneToMany',
+      'oneToOne',
       'api::contact-information.contact-information'
     >;
     createdAt: Attribute.DateTime;
@@ -1099,6 +1099,7 @@ export interface ApiFoundCatFoundCat extends Schema.CollectionType {
     singularName: 'found-cat';
     pluralName: 'found-cats';
     displayName: 'FoundCat';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1112,6 +1113,7 @@ export interface ApiFoundCatFoundCat extends Schema.CollectionType {
       'oneToOne',
       'api::cat.cat'
     >;
+    discovery_circumstances: Attribute.Text & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1227,6 +1229,7 @@ export interface ApiLostCatLostCat extends Schema.CollectionType {
       'oneToOne',
       'api::cat.cat'
     >;
+    disappearance_circumstances: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1251,6 +1254,7 @@ export interface ApiSupporterSupporter extends Schema.CollectionType {
     singularName: 'supporter';
     pluralName: 'supporters';
     displayName: 'supporter';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1265,6 +1269,11 @@ export interface ApiSupporterSupporter extends Schema.CollectionType {
       'api::supporter.supporter',
       'manyToMany',
       'api::virtual-cat.virtual-cat'
+    >;
+    portrait: Attribute.Relation<
+      'api::supporter.supporter',
+      'oneToOne',
+      'api::image.image'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1290,6 +1299,7 @@ export interface ApiVirtualCatVirtualCat extends Schema.CollectionType {
     singularName: 'virtual-cat';
     pluralName: 'virtual-cats';
     displayName: 'VirtualCat';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -1304,6 +1314,11 @@ export interface ApiVirtualCatVirtualCat extends Schema.CollectionType {
       'api::virtual-cat.virtual-cat',
       'manyToMany',
       'api::supporter.supporter'
+    >;
+    caretaker: Attribute.Relation<
+      'api::virtual-cat.virtual-cat',
+      'oneToOne',
+      'api::contact-information.contact-information'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

@@ -21,9 +21,9 @@
       "relation": "oneToOne",
       "target": "api::cat.cat"
     },
-    "contact_informations": {
+    "caretaker": {
       "type": "relation",
-      "relation": "oneToMany",
+      "relation": "oneToOne",
       "target": "api::contact-information.contact-information"
     }
   }
