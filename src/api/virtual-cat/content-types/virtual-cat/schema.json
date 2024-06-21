@@ -4,7 +4,8 @@
   "info": {
     "singularName": "virtual-cat",
     "pluralName": "virtual-cats",
-    "displayName": "VirtualCat"
+    "displayName": "VirtualCat",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -21,6 +22,11 @@
       "relation": "manyToMany",
       "target": "api::supporter.supporter",
       "inversedBy": "virtual_cats"
+    },
+    "caretaker": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::contact-information.contact-information"
     }
   }
 }

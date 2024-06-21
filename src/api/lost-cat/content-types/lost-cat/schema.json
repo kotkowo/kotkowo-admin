@@ -31,6 +31,10 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::cat.cat"
+    },
+    "disappearance_circumstances": {
+      "type": "string",
+      "required": true
     }
   }
 }
