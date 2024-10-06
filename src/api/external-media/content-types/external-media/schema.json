@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "external_medias",
+  "info": {
+    "singularName": "external-media",
+    "pluralName": "external-medias",
+    "displayName": "ExternalMedia",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "tags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::announcement-tag.announcement-tag"
+    },
+    "media_url": {
+      "type": "string",
+      "required": true
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  }
+}

@@ -1093,6 +1093,44 @@ export interface ApiContactInformationContactInformation
   };
 }
 
+export interface ApiExternalMediaExternalMedia extends Schema.CollectionType {
+  collectionName: 'external_medias';
+  info: {
+    singularName: 'external-media';
+    pluralName: 'external-medias';
+    displayName: 'ExternalMedia';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    tags: Attribute.Relation<
+      'api::external-media.external-media',
+      'oneToMany',
+      'api::announcement-tag.announcement-tag'
+    >;
+    media_url: Attribute.String & Attribute.Required;
+    image: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::external-media.external-media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::external-media.external-media',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiFoundCatFoundCat extends Schema.CollectionType {
   collectionName: 'found_cats';
   info: {
@@ -1364,6 +1402,7 @@ declare module '@strapi/types' {
       'api::cat.cat': ApiCatCat;
       'api::cat-tag.cat-tag': ApiCatTagCatTag;
       'api::contact-information.contact-information': ApiContactInformationContactInformation;
+      'api::external-media.external-media': ApiExternalMediaExternalMedia;
       'api::found-cat.found-cat': ApiFoundCatFoundCat;
       'api::image.image': ApiImageImage;
       'api::looking-for-adoption-cat.looking-for-adoption-cat': ApiLookingForAdoptionCatLookingForAdoptionCat;
