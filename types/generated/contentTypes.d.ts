@@ -829,6 +829,48 @@ export interface ApiAdoptedCatAdoptedCat extends Schema.CollectionType {
   };
 }
 
+export interface ApiAdviceAdvice extends Schema.CollectionType {
+  collectionName: 'advices';
+  info: {
+    singularName: 'advice';
+    pluralName: 'advices';
+    displayName: 'Advice';
+    description: '';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    tags: Attribute.Relation<
+      'api::advice.advice',
+      'oneToMany',
+      'api::announcement-tag.announcement-tag'
+    >;
+    article: Attribute.Relation<
+      'api::advice.advice',
+      'oneToOne',
+      'api::article.article'
+    >;
+    image: Attribute.Media & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    publishedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::advice.advice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::advice.advice',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiAnnouncementAnnouncement extends Schema.CollectionType {
   collectionName: 'announcements';
   info: {
@@ -922,6 +964,11 @@ export interface ApiArticleArticle extends Schema.CollectionType {
     >;
     image: Attribute.Media & Attribute.Required;
     content: Attribute.RichText & Attribute.Required;
+    advice: Attribute.Relation<
+      'api::article.article',
+      'oneToOne',
+      'api::advice.advice'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1395,6 +1442,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::adopted-cat.adopted-cat': ApiAdoptedCatAdoptedCat;
+      'api::advice.advice': ApiAdviceAdvice;
       'api::announcement.announcement': ApiAnnouncementAnnouncement;
       'api::announcement-tag.announcement-tag': ApiAnnouncementTagAnnouncementTag;
       'api::article.article': ApiArticleArticle;

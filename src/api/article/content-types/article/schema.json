@@ -33,6 +33,12 @@
     "content": {
       "type": "richtext",
       "required": true
+    },
+    "advice": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::advice.advice",
+      "mappedBy": "article"
     }
   }
 }
