@@ -853,7 +853,15 @@ export interface ApiAdviceAdvice extends Schema.CollectionType {
       'api::article.article'
     >;
     image: Attribute.Media & Attribute.Required;
-    views: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
+    views: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -896,7 +904,15 @@ export interface ApiAnnouncementAnnouncement extends Schema.CollectionType {
       'oneToOne',
       'api::article.article'
     >;
-    views: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
+    views: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -1225,12 +1241,14 @@ export interface ApiLastViewPullLastViewPull extends Schema.SingleType {
     singularName: 'last-view-pull';
     pluralName: 'last-view-pulls';
     displayName: 'LastViewPull';
+    description: '';
   };
   options: {
     draftAndPublish: false;
   };
   attributes: {
     pull_date: Attribute.DateTime &
+      Attribute.Required &
       Attribute.DefaultTo<'2025-04-01T22:00:00.000Z'>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
