@@ -1,5 +1,5 @@
-{pkgs, ...}: {
-  packages = [];
-  languages.javascript.enable = true;
+{ pkgs, ... }:
+{
+  languages.typescript.enable = true;
   dotenv.enable = true;
 }
