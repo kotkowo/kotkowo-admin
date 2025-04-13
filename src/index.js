@@ -49,13 +49,10 @@ module.exports = {
                 throw new Error(`No table found for content type: ${contentType}`);
               }
               const knex = strapi.db.connection;
-              const result = await knex(tableName)
+              await knex(tableName)
                 .where({ id })
-                .increment(field, amount)
-                .returning(['id', field]);
-              if (!result.length) {
-                throw new Error(`Entry with id=${id} not found`);
-              }
+                .increment(field, amount);
+              // We dont query for any result and ignore missing ids
               return true;
             },
           },
@@ -76,15 +73,13 @@ module.exports = {
                   if (!tableName) {
                     throw new Error(`No table found for content type: ${contentType}`);
                   }
-                  const result = await trx(tableName)
+                  await trx(tableName)
                     .where({ id })
                     .increment(field, amount)
-                    .returning(['id', field]);
-                  if (!result.length) {
-                    throw new Error(`Entry with id=${id} not found`);
-                  }
                 }
+                // We dont query for any result and ignore missing ids
                 return true;
+
               });
             },
           },
@@ -108,14 +103,10 @@ module.exports = {
                   if (!tableName) {
                     throw new Error(`No table found for content type: ${contentType}`);
                   }
-                  const result = await trx(tableName)
+                  await trx(tableName)
                     .where({ id })
-                    .increment(field, amount)
-                    .returning(['id', field]);
-
-                  if (!result.length) {
-                    throw new Error(`Entry with id=${id} not found`);
-                  }
+                    .increment(field, amount);
+                  // ignoring results
                 }
 
                 const lastPullDateModel = strapi.db.metadata.get('api::last-view-pull.last-view-pull');
@@ -144,7 +135,6 @@ module.exports = {
                   await trx(lastPullDateTable)
                     .insert({ pull_date: pull_date });
                 }
-
                 return true;
               });
             },
