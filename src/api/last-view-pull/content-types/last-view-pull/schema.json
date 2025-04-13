@@ -1,0 +1,19 @@
+{
+  "kind": "singleType",
+  "collectionName": "last_view_pulls",
+  "info": {
+    "singularName": "last-view-pull",
+    "pluralName": "last-view-pulls",
+    "displayName": "LastViewPull"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "pull_date": {
+      "type": "datetime",
+      "default": "2025-04-01T22:00:00.000Z"
+    }
+  }
+}
