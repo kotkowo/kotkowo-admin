@@ -4,7 +4,8 @@
   "info": {
     "singularName": "last-view-pull",
     "pluralName": "last-view-pulls",
-    "displayName": "LastViewPull"
+    "displayName": "LastViewPull",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -13,7 +14,8 @@
   "attributes": {
     "pull_date": {
       "type": "datetime",
-      "default": "2025-04-01T22:00:00.000Z"
+      "default": "2025-04-01T22:00:00.000Z",
+      "required": true
     }
   }
 }
