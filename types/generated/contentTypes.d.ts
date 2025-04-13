@@ -853,6 +853,7 @@ export interface ApiAdviceAdvice extends Schema.CollectionType {
       'api::article.article'
     >;
     image: Attribute.Media & Attribute.Required;
+    views: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -895,6 +896,7 @@ export interface ApiAnnouncementAnnouncement extends Schema.CollectionType {
       'oneToOne',
       'api::article.article'
     >;
+    views: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
@@ -980,40 +982,6 @@ export interface ApiArticleArticle extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::article.article',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiArticleViewArticleView extends Schema.CollectionType {
-  collectionName: 'article_views';
-  info: {
-    singularName: 'article-view';
-    pluralName: 'article-views';
-    displayName: 'ArticleView';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    client_address: Attribute.String & Attribute.Required;
-    article: Attribute.Relation<
-      'api::article-view.article-view',
-      'oneToOne',
-      'api::article.article'
-    >;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::article-view.article-view',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::article-view.article-view',
       'oneToOne',
       'admin::user'
     > &
@@ -1251,6 +1219,36 @@ export interface ApiImageImage extends Schema.CollectionType {
   };
 }
 
+export interface ApiLastViewPullLastViewPull extends Schema.SingleType {
+  collectionName: 'last_view_pulls';
+  info: {
+    singularName: 'last-view-pull';
+    pluralName: 'last-view-pulls';
+    displayName: 'LastViewPull';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    pull_date: Attribute.DateTime &
+      Attribute.DefaultTo<'2025-04-01T22:00:00.000Z'>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::last-view-pull.last-view-pull',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::last-view-pull.last-view-pull',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLookingForAdoptionCatLookingForAdoptionCat
   extends Schema.CollectionType {
   collectionName: 'looking_for_adoption_cats';
@@ -1446,13 +1444,13 @@ declare module '@strapi/types' {
       'api::announcement.announcement': ApiAnnouncementAnnouncement;
       'api::announcement-tag.announcement-tag': ApiAnnouncementTagAnnouncementTag;
       'api::article.article': ApiArticleArticle;
-      'api::article-view.article-view': ApiArticleViewArticleView;
       'api::cat.cat': ApiCatCat;
       'api::cat-tag.cat-tag': ApiCatTagCatTag;
       'api::contact-information.contact-information': ApiContactInformationContactInformation;
       'api::external-media.external-media': ApiExternalMediaExternalMedia;
       'api::found-cat.found-cat': ApiFoundCatFoundCat;
       'api::image.image': ApiImageImage;
+      'api::last-view-pull.last-view-pull': ApiLastViewPullLastViewPull;
       'api::looking-for-adoption-cat.looking-for-adoption-cat': ApiLookingForAdoptionCatLookingForAdoptionCat;
       'api::lost-cat.lost-cat': ApiLostCatLostCat;
       'api::supporter.supporter': ApiSupporterSupporter;
