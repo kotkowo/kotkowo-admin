@@ -4,8 +4,9 @@
   "info": {
     "singularName": "article",
     "pluralName": "articles",
-    "displayName": "Article",
-    "description": ""
+    "displayName": "Artykuł",
+    "description": "",
+    "displayField": "Introduction"
   },
   "options": {
     "draftAndPublish": true
@@ -13,7 +14,7 @@
   "pluginOptions": {},
   "attributes": {
     "Introduction": {
-      "type": "text",
+      "type": "string",
       "required": true
     },
     "announcement": {

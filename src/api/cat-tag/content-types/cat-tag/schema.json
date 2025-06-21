@@ -4,7 +4,7 @@
   "info": {
     "singularName": "cat-tag",
     "pluralName": "cat-tags",
-    "displayName": "CatTag"
+    "displayName": "Tagi kotów"
   },
   "options": {
     "draftAndPublish": false
