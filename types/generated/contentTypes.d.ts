@@ -793,7 +793,7 @@ export interface ApiAdoptedCatAdoptedCat extends Schema.CollectionType {
   info: {
     singularName: 'adopted-cat';
     pluralName: 'adopted-cats';
-    displayName: 'AdoptedCat';
+    displayName: 'Zaadoptowane Koty';
     description: '';
   };
   options: {
@@ -834,7 +834,7 @@ export interface ApiAdviceAdvice extends Schema.CollectionType {
   info: {
     singularName: 'advice';
     pluralName: 'advices';
-    displayName: 'Advice';
+    displayName: 'Porady';
     description: '';
   };
   options: {
@@ -885,7 +885,7 @@ export interface ApiAnnouncementAnnouncement extends Schema.CollectionType {
   info: {
     singularName: 'announcement';
     pluralName: 'announcements';
-    displayName: 'Announcement';
+    displayName: 'Og\u0142oszenia (newsy)';
     description: '';
   };
   options: {
@@ -937,7 +937,7 @@ export interface ApiAnnouncementTagAnnouncementTag
   info: {
     singularName: 'announcement-tag';
     pluralName: 'announcement-tags';
-    displayName: 'AnnouncementTag';
+    displayName: 'Tagi artyku\u0142\u00F3w';
     description: '';
   };
   options: {
@@ -967,14 +967,15 @@ export interface ApiArticleArticle extends Schema.CollectionType {
   info: {
     singularName: 'article';
     pluralName: 'articles';
-    displayName: 'Article';
+    displayName: 'Artyku\u0142';
     description: '';
+    displayField: 'Introduction';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
-    Introduction: Attribute.Text & Attribute.Required;
+    Introduction: Attribute.String & Attribute.Required;
     announcement: Attribute.Relation<
       'api::article.article',
       'oneToOne',
@@ -1010,7 +1011,7 @@ export interface ApiCatCat extends Schema.CollectionType {
   info: {
     singularName: 'cat';
     pluralName: 'cats';
-    displayName: 'Cat';
+    displayName: 'Koty';
     description: '';
   };
   options: {
@@ -1061,7 +1062,7 @@ export interface ApiCatTagCatTag extends Schema.CollectionType {
   info: {
     singularName: 'cat-tag';
     pluralName: 'cat-tags';
-    displayName: 'CatTag';
+    displayName: 'Tagi kot\u00F3w';
   };
   options: {
     draftAndPublish: false;
@@ -1096,7 +1097,7 @@ export interface ApiContactInformationContactInformation
   info: {
     singularName: 'contact-information';
     pluralName: 'contact-informations';
-    displayName: 'ContactInformation';
+    displayName: 'Informacje kontaktowe (opiekunowie)';
     description: '';
   };
   options: {
@@ -1129,7 +1130,7 @@ export interface ApiExternalMediaExternalMedia extends Schema.CollectionType {
   info: {
     singularName: 'external-media';
     pluralName: 'external-medias';
-    displayName: 'ExternalMedia';
+    displayName: 'Media zewn\u0119trzne';
     description: '';
   };
   options: {
@@ -1167,7 +1168,7 @@ export interface ApiFoundCatFoundCat extends Schema.CollectionType {
   info: {
     singularName: 'found-cat';
     pluralName: 'found-cats';
-    displayName: 'FoundCat';
+    displayName: 'Znalezione Koty';
     description: '';
   };
   options: {
@@ -1206,7 +1207,7 @@ export interface ApiImageImage extends Schema.CollectionType {
   info: {
     singularName: 'image';
     pluralName: 'images';
-    displayName: 'Image';
+    displayName: 'Obrazy';
     description: '';
   };
   options: {
@@ -1273,7 +1274,7 @@ export interface ApiLookingForAdoptionCatLookingForAdoptionCat
   info: {
     singularName: 'looking-for-adoption-cat';
     pluralName: 'looking-for-adoption-cats';
-    displayName: 'LookingForAdoptionCat';
+    displayName: 'Koty szukaj\u0105ce domu';
     description: '';
   };
   options: {
@@ -1314,7 +1315,7 @@ export interface ApiLostCatLostCat extends Schema.CollectionType {
   info: {
     singularName: 'lost-cat';
     pluralName: 'lost-cats';
-    displayName: 'LostCat';
+    displayName: 'Zaginione Koty';
     description: '';
   };
   options: {
